@@ -36,10 +36,10 @@ class SiguaPlugin:
 
     # Cargar formulario desde consulta pg para combo de edificios
     dbname = "sigua"
-    host = "localhost"
+    host = "host"
     port = "5432"
-    user = "postgres"
-    password = "j3m"
+    user = "user"
+    password = "user"
     
     connText = "dbname=%(dbname)s host=%(host)s port=%(port)s user=%(user)s password=%(password)s" %vars()
     conn = psycopg2.connect(connText)
