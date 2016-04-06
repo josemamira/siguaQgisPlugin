@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/plugins/sigua" >
+        <file>sigua.png</file>
+    </qresource>
+</RCC>
+
