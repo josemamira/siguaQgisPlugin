@@ -13,7 +13,7 @@ This Qgis plugin provide functionality to load vector layer building from Univer
 
 ### Installation
 Copy entire folder into Qgis plugin repository
-* Linux: /home/<username>/.qgis2/python/plugins
+* Linux: /home/ <username> /.qgis2/python/plugins
 * Windows: C:\users\<username>\.qgis2\python\plugins
 > This folders are hidden
 
