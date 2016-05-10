@@ -12,7 +12,7 @@ This Qgis plugin provide functionality to load vector layer building from Univer
 * José Manuel Mira Martínez - Laboratorio de Geomática (UA)
 
 ### Installation
-Copy entire folder into Qgis plugin repository
+Copy entire folder SiguaPlugin in your Qgis plugin repository
 * Linux: /home/<username>/.qgis2/python/plugins
 * Windows: C:\users\<username>\.qgis2\python\plugins
 > This folders are hidden
