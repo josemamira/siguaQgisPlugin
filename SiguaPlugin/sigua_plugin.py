@@ -541,6 +541,7 @@ class SiguaPlugin:
         palyr.size = 15
         palyr.textColor = QColor("black")
         palyr.drawLabels = True
+        palyr.fitInPolygonOnly = True #solo dibuja las label que caben dentro del poligono
         palyr.placement= QgsPalLayerSettings.OverPoint
         palyr.setDataDefinedProperty(QgsPalLayerSettings.Size,True,True,'7','')
         palyr.writeToLayer(layer)
