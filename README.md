@@ -19,7 +19,7 @@ Copy entire folder into Qgis plugin repository
 
 Create a python file named dbsettings.py with this content
 
-...python
+...sh
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
