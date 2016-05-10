@@ -213,15 +213,15 @@ class SiguaPlugin:
             query = db.exec_(sql)
             while query.next():
                 zzeetxt = unicode(query.value(0))
-                self.dlg.comboBoxEdificio.addItem(zzeetxt)                
-                
+                self.dlg.comboBoxEdificio.addItem(zzeetxt)
+
             self.dlg.show()
             # Acciones para botones
             self.dlg.aceptarButton.clicked.connect(self.cargaEdificio)
             self.dlg.cerrarButton.clicked.connect(self.dlg.close)
             # Desactivar botones
             self.dlg.colorButton.setEnabled(False)
-            self.dlg.temaButton.setEnabled(False)        
+            self.dlg.temaButton.setEnabled(False)
             self.dlg.tema2Button.setEnabled(False)
             self.dlg.mapaButton.setEnabled(False)
             self.dlg.labelButton.setEnabled(False)
@@ -263,6 +263,10 @@ class SiguaPlugin:
         uri.setDataSource("",sql,"geometria","","gid")
         # Definir la vlayer de PostGIS
         vLayer = QgsVectorLayer(uri.uri(), varTocZZEEPP, "postgres")
+        # Set metadata
+        vLayer.setShortName(varTocZZEEPP)
+        vLayer.setTitle(u"Planta de edificio " + varTocZZEEPP )
+        vLayer.setAbstract(u"Edificio procedente del Sistema de Información Geográfica de la Universidad de Alicante (SIGUA)")
         # Con esto añadimos la capa al TOC y se visualiza
         QgsMapLayerRegistry.instance().addMapLayer(vLayer)
         # Resultado de la creacion de la capa
@@ -274,7 +278,7 @@ class SiguaPlugin:
         #activar botones
         self.dlg.colorButton.setEnabled(True)
         self.dlg.colorButton.clicked.connect(self.change_color)
-        self.dlg.temaButton.setEnabled(True)        
+        self.dlg.temaButton.setEnabled(True)
         self.dlg.temaButton.clicked.connect(self.tematico)
         self.dlg.tema2Button.setEnabled(True)
         self.dlg.tema2Button.clicked.connect(self.tematico2)
@@ -307,215 +311,220 @@ class SiguaPlugin:
 
     # crea un mapa temático de usos
     def tematico(self):
-		layer = self.iface.activeLayer()
-		usos = {
-			u"Administración":("#b3cde3", u"Administración"),
-			"Despacho":("#fbb4ae", "Despacho"),
-			"Docencia":("#ccebc5", "Docencia"),
-			"Laboratorio":("#decbe4", "Laboratorio"),			
-			"Salas":("#fed9a6", "Salas"),
-			"Muros":("#808080", "Muros"),
-			"":("white", "Resto")}
-		categorias = []
-		for estancia, (color, label) in usos.items():
-			sym = QgsSymbolV2.defaultSymbol(layer.geometryType())
-			sym.setColor(QColor(color))
-			category = QgsRendererCategoryV2(estancia, sym, label)
-			categorias.append(category)
+        layer = self.iface.activeLayer()
+        usos = {
+            u"Administración":("#b3cde3", u"Administración"),
+            "Despacho":("#fbb4ae", "Despacho"),
+            "Docencia":("#ccebc5", "Docencia"),
+            "Laboratorio":("#decbe4", "Laboratorio"),
+            "Salas":("#fed9a6", "Salas"),
+            "Muros":("#808080", "Muros"),
+            "":("white", "Resto")}
+        categorias = []
+        for estancia, (color, label) in usos.items():
+            sym = QgsSymbolV2.defaultSymbol(layer.geometryType())
+            sym.setColor(QColor(color))
+            category = QgsRendererCategoryV2(estancia, sym, label)
+            categorias.append(category)
 
-		field = "activresum"
-		renderer = QgsCategorizedSymbolRendererV2(field, categorias)
-		layer.setRendererV2(renderer)
-		QgsMapLayerRegistry.instance().addMapLayer(layer)
-		layer.triggerRepaint()
-		layer.setLayerName(layer.name()[:6] + u' (uso)')	# cambia el nombre
+            field = "activresum"
+            index = layer.fieldNameIndex("activresum")
+            # comprueba que existe el campo activresum
+            if (index == -1):
+                QMessageBox.critical(None, "Field error", "No existe el campo activresum. Seleccione la capa adecuada")
+                break
+
+            renderer = QgsCategorizedSymbolRendererV2(field, categorias)
+            layer.setRendererV2(renderer)
+            QgsMapLayerRegistry.instance().addMapLayer(layer)
+            layer.triggerRepaint()
+            layer.setLayerName(layer.name()[:6] + u' (uso)')
+            # actualizar metadatos
+            layer.setTitle(u"Planta de edificio " + layer.name()[:6] + u' (uso)' )
+            layer.setAbstract(u"Edificio procedente del Sistema de Información Geográfica de la Universidad de Alicante (SIGUA)")
+
 
     # crea un temático de unidades/dptos
     def tematico2(self):
-		layer = self.iface.activeLayer()
-		# array de dptos
-		idx = layer.fieldNameIndex('txt_dpto_sigua')
-		dptosArr = layer.uniqueValues( idx )		
-		total = len(dptosArr)
-		if total < 3:
-			coloresArr= colorbrewer.Set3[3]
-		elif total <= 12:
-			coloresArr= colorbrewer.Set3[total]
-		else:
-			exceso = total -12
-			if exceso < 3:
-				coloresArr= colorbrewer.Set3[12]+colorbrewer.Paired[3]
-			else:
-				coloresArr= colorbrewer.Set3[12]+colorbrewer.Paired[exceso]
+        layer = self.iface.activeLayer()
+        # array de dptos
+        idx = layer.fieldNameIndex('txt_dpto_sigua')
+        dptosArr = layer.uniqueValues( idx )
+        total = len(dptosArr)
+        if total < 3:
+            coloresArr= colorbrewer.Set3[3]
+        elif total <= 12:
+            coloresArr= colorbrewer.Set3[total]
+        else:
+            exceso = total -12
+            if exceso < 3:
+                coloresArr= colorbrewer.Set3[12]+colorbrewer.Paired[3]
+            else:
+                coloresArr= colorbrewer.Set3[12]+colorbrewer.Paired[exceso]
 
-		print coloresArr
-		dptoDic = {}
-		for i in range(0,len(dptosArr)):
-			if  dptosArr[i]==u"GESTIÓN DE ESPACIOS":
-				dptoDic[dptosArr[i]]=("white",dptosArr[i])
-			else:
-				dptoDic[dptosArr[i]]=(coloresArr[i],dptosArr[i])
+        print coloresArr
+        dptoDic = {}
+        for i in range(0,len(dptosArr)):
+            if  dptosArr[i]==u"GESTIÓN DE ESPACIOS":
+                dptoDic[dptosArr[i]]=("white",dptosArr[i])
+            else:
+                dptoDic[dptosArr[i]]=(coloresArr[i],dptosArr[i])
 
-		#print dptoDic
-		categories = []
-		for estancia, (color, label) in dptoDic.items():
-			sym = QgsSymbolV2.defaultSymbol(layer.geometryType())
-			sym.setColor(QColor(color))
-			category = QgsRendererCategoryV2(estancia, sym, label)
-			categories.append(category)
+        #print dptoDic
+        categories = []
+        for estancia, (color, label) in dptoDic.items():
+            sym = QgsSymbolV2.defaultSymbol(layer.geometryType())
+            sym.setColor(QColor(color))
+            category = QgsRendererCategoryV2(estancia, sym, label)
+            categories.append(category)
 
-		field = "txt_dpto_sigua"
-		renderer = QgsCategorizedSymbolRendererV2(field, categories)
-		layer.setRendererV2(renderer)
-		QgsMapLayerRegistry.instance().addMapLayer(layer)
-		layer.triggerRepaint()
-		layer.setLayerName(layer.name()[:6] + u' (organización)')		
+        field = "txt_dpto_sigua"
+        renderer = QgsCategorizedSymbolRendererV2(field, categories)
+        layer.setRendererV2(renderer)
+        QgsMapLayerRegistry.instance().addMapLayer(layer)
+        layer.triggerRepaint()
+        layer.setLayerName(layer.name()[:6] + u' (organización)')		
 
 
     def mapapdf(self):
-		# inicio QgsComposition
-		mapRenderer = self.iface.mapCanvas().mapRenderer()
-		c = QgsComposition(mapRenderer)
-		c.setPlotStyle(QgsComposition.Print)
-		
-		# horizontal o vertical
-		layer = iface.activeLayer()
-		canvas = iface.mapCanvas()
-		extent = layer.extent()
- 		#extent.height()
-		#extent.width()
+        # inicio QgsComposition
+        mapRenderer = self.iface.mapCanvas().mapRenderer()
+        c = QgsComposition(mapRenderer)
+        c.setPlotStyle(QgsComposition.Print)
 
-		if (extent.width() > extent.height()):
-			papel = "H"
-			pagWidth = 297
-			pagHeight = 210
-		else:
-			papel ="V"
-			pagWidth = 210
-			pagHeight = 297
+        # horizontal o vertical
+        layer = iface.activeLayer()
+        canvas = iface.mapCanvas()
+        extent = layer.extent()
+        #extent.height()
+        #extent.width()
 
-		
-		
-		#mapa
-		x, y = 0, 0
-		w, h = pagWidth, pagHeight
-		#w, h = c.paperWidth(), c.paperHeight()
-		composerMap = QgsComposerMap(c, x ,y, w, h)
-		c.addItem(composerMap)
+        if (extent.width() > extent.height()):
+            papel = "H"
+            pagWidth = 297
+            pagHeight = 210
+        else:
+            papel ="V"
+            pagWidth = 210
+            pagHeight = 297
 
-		# label
-		composerLabel = QgsComposerLabel(c)
-		composerLabel.setText(u'TÍTULO DEL MAPA')
-		composerLabel.setFont(QFont('Droid Sans',15, QFont.Bold))
-		composerLabel.setItemPosition(15,190, True)
-		composerLabel.adjustSizeToText()
-		c.addItem(composerLabel)
-		
-		# metadatos
-		text = QgsComposerLabel(c)
-		text.setText(u'PROYECCIÓN' + '\n' + 'UTM, Datum ETRS89, Huso 30' + '\n' + u'Autor: José Manuel Mira Martínez')
-		text.setFont(QFont('Droid Sans',15, QFont.Bold))
-		text.setItemPosition(40, 40, True)
-		text.adjustSizeToText()
-		#text.setFrameEnabled(True)
-		text.setMargin(-6)
-		c.addItem(text)
+            #mapa
+            x, y = 0, 0
+            w, h = pagWidth, pagHeight
+            #w, h = c.paperWidth(), c.paperHeight()
+            composerMap = QgsComposerMap(c, x ,y, w, h)
+            c.addItem(composerMap)
 
+            # label
+            composerLabel = QgsComposerLabel(c)
+            composerLabel.setText(u'TÍTULO DEL MAPA')
+            composerLabel.setFont(QFont('Droid Sans',15, QFont.Bold))
+            composerLabel.setItemPosition(15,190, True)
+            composerLabel.adjustSizeToText()
+            c.addItem(composerLabel)
 
-		#legend
-		legend = QgsComposerLegend(c)
-		legend.model().setLayerSet(mapRenderer.layerSet())
-		c.addItem(legend)
+            # metadatos
+            text = QgsComposerLabel(c)
+            text.setText(u'PROYECCIÓN' + '\n' + 'UTM, Datum ETRS89, Huso 30' + '\n' + u'Autor: José Manuel Mira Martínez')
+            text.setFont(QFont('Droid Sans',15, QFont.Bold))
+            text.setItemPosition(40, 40, True)
+            text.adjustSizeToText()
+            #text.setFrameEnabled(True)
+            text.setMargin(-6)
+            c.addItem(text)
 
-		# escala numérica
-		item = QgsComposerScaleBar(c)
-		item.setStyle('Numeric') # optionally modify the style
-		item.setComposerMap(composerMap)
-		item.applyDefaultSize()
-		c.addItem(item)
-		
-		# escala gráfica		
-		ScaleBar = QgsComposerScaleBar(c)
-		ScaleBar.setComposerMap(composerMap)
-		ScaleBar.setStyle('Line Ticks Up') # optionally modify the style
-		#ScaleBar.setFrame(False)
-		ScaleBar.setUnitLabeling("m")
-		ScaleBar.setNumMapUnitsPerScaleBarUnit(1)
-		ScaleBar.setNumSegmentsLeft(4)
-		ScaleBar.setNumSegments(4)
-		ScaleBar.setNumUnitsPerSegment(5)
-		#But nothing seems to change on my output. I finish my code with :
-		ScaleBar.setItemPosition(120,150)
-		#ScaleBar.applyDefaultSize()
-		#ScaleBar.update()
-		c.addItem(ScaleBar)		
-		
-		
-		
-		# Norte
-		norte = QgsComposerPicture(c)
-		norte.setPos(QPointF(50,110))
-		norte.setPictureFile("/home/jose/.qgis2/python/plugins/SiguaPlugin/norte.svg")
-		norte.setSceneRect(QRectF(0,100,20,20))
-		c.addItem(norte)
-		
-		# Logo sigua
-		norte = QgsComposerPicture(c)
-		norte.setPos(QPointF(50,110))
-		norte.setPictureFile("/home/jose/.qgis2/python/plugins/SiguaPlugin/logo_sigua.svg")
-		norte.setSceneRect(QRectF(200,10,30,10))
-		c.addItem(norte)
+            #legend
+            legend = QgsComposerLegend(c)
+            legend.model().setLayerSet(mapRenderer.layerSet())
+            c.addItem(legend)
 
-		# rectángulo borde sin relleno
-		grey = {'color_border':'230,230,230,255','style':'no'}
-		greysym = QgsFillSymbolV2.createSimple(grey)
-		shape1 = QgsComposerShape(10,10,pagWidth-20,pagHeight-20,c)
-		shape1.setShapeType(1)
-		shape1.setUseSymbolV2(True)
-		shape1.setShapeStyleSymbol(greysym)
-		c.addItem(shape1)
+            # escala numérica
+            item = QgsComposerScaleBar(c)
+            item.setStyle('Numeric') # optionally modify the style
+            item.setComposerMap(composerMap)
+            item.applyDefaultSize()
+            c.addItem(item)
 
-		# rectángulo shape rojo con borde azul
-		red = {'color':'255,0,0,255','color_border':'0,0,255,255'}
-		redsym = QgsFillSymbolV2.createSimple(red)
-		shape1 = QgsComposerShape(10,50,10,25,c)
-		shape1.setShapeType(1)
-		shape1.setUseSymbolV2(True)
-		shape1.setShapeStyleSymbol(redsym)
-		c.addItem(shape1)
+            # escala gráfica
+            ScaleBar = QgsComposerScaleBar(c)
+            ScaleBar.setComposerMap(composerMap)
+            ScaleBar.setStyle('Line Ticks Up') # optionally modify the style
+            #ScaleBar.setFrame(False)
+            ScaleBar.setUnitLabeling("m")
+            ScaleBar.setNumMapUnitsPerScaleBarUnit(1)
+            ScaleBar.setNumSegmentsLeft(4)
+            ScaleBar.setNumSegments(4)
+            ScaleBar.setNumUnitsPerSegment(5)
+            #But nothing seems to change on my output. I finish my code with :
+            ScaleBar.setItemPosition(120,150)
+            #ScaleBar.applyDefaultSize()
+            #ScaleBar.update()
+            c.addItem(ScaleBar)
 
-		# elipse/circulo de 20x20 en posicion 100,100 shape rojo con borde azul
-		red = {'color':'255,0,0,255','color_border':'0,0,255,255'}
-		redsym = QgsFillSymbolV2.createSimple(red)
-		shape1 = QgsComposerShape(100,100,20,20,c)
-		shape1.setShapeType(0) # 0 elipse, 1 rectangulo, 2 triangulo
-		shape1.setUseSymbolV2(True)
-		shape1.setShapeStyleSymbol(redsym)
-		c.addItem(shape1)        
+            # Norte
+            norte = QgsComposerPicture(c)
+            norte.setPos(QPointF(50,110))
+            norte.setPictureFile("/home/jose/.qgis2/python/plugins/SiguaPlugin/norte.svg")
+            norte.setSceneRect(QRectF(0,100,20,20))
+            c.addItem(norte)
 
-		#frame is drawn around each item by default. How to remove the frame
-		#composerLabel.setFrame(False)
+            # Logo sigua
+            norte = QgsComposerPicture(c)
+            norte.setPos(QPointF(50,110))
+            norte.setPictureFile("/home/jose/.qgis2/python/plugins/SiguaPlugin/logo_sigua.svg")
+            norte.setSceneRect(QRectF(200,10,30,10))
+            c.addItem(norte)
 
-		# PDF
-		printer = QPrinter()
-		printer.setOutputFormat(QPrinter.PdfFormat)
-		layer = self.iface.activeLayer()
-		import time		
-		salida = "mapa_"+layer.name()+"_"+time.strftime("%Y%m%d%H%M%S")+".pdf"
-		printer.setOutputFileName(salida)
-		printer.setPaperSize(QSizeF(pagWidth, pagHeight), QPrinter.Millimeter)
-		#printer.setPaperSize(QSizeF(c.paperWidth(), c.paperHeight()), QPrinter.Millimeter)
-		printer.setFullPage(True)
-		printer.setColorMode(QPrinter.Color)
-		printer.setResolution(c.printResolution())
+            # rectángulo borde sin relleno
+            grey = {'color_border':'230,230,230,255','style':'no'}
+            greysym = QgsFillSymbolV2.createSimple(grey)
+            shape1 = QgsComposerShape(10,10,pagWidth-20,pagHeight-20,c)
+            shape1.setShapeType(1)
+            shape1.setUseSymbolV2(True)
+            shape1.setShapeStyleSymbol(greysym)
+            c.addItem(shape1)
 
-		pdfPainter = QPainter(printer)
-		paperRectMM = printer.pageRect(QPrinter.Millimeter)
-		paperRectPixel = printer.pageRect(QPrinter.DevicePixel)
-		c.render(pdfPainter, paperRectPixel, paperRectMM)
-		pdfPainter.end()
-		QMessageBox.information(self.iface.mainWindow(), "Resultado", "El mapa " + salida + " ha sido creado existosamente.")
-		#QMessageBox.information(None, "Resultados", "El mapa " + salida + " ha sido creado existosamente.")
+            # rectángulo shape rojo con borde azul
+            red = {'color':'255,0,0,255','color_border':'0,0,255,255'}
+            redsym = QgsFillSymbolV2.createSimple(red)
+            shape1 = QgsComposerShape(10,50,10,25,c)
+            shape1.setShapeType(1)
+            shape1.setUseSymbolV2(True)
+            shape1.setShapeStyleSymbol(redsym)
+            c.addItem(shape1)
+
+            # elipse/circulo de 20x20 en posicion 100,100 shape rojo con borde azul
+            red = {'color':'255,0,0,255','color_border':'0,0,255,255'}
+            redsym = QgsFillSymbolV2.createSimple(red)
+            shape1 = QgsComposerShape(100,100,20,20,c)
+            shape1.setShapeType(0) # 0 elipse, 1 rectangulo, 2 triangulo
+            shape1.setUseSymbolV2(True)
+            shape1.setShapeStyleSymbol(redsym)
+            c.addItem(shape1)
+
+            #frame is drawn around each item by default. How to remove the frame
+            #composerLabel.setFrame(False)
+
+            # PDF
+            printer = QPrinter()
+            printer.setOutputFormat(QPrinter.PdfFormat)
+            layer = self.iface.activeLayer()
+            import time
+            salida = "mapa_"+layer.name()+"_"+time.strftime("%Y%m%d%H%M%S")+".pdf"
+            printer.setOutputFileName(salida)
+            printer.setPaperSize(QSizeF(pagWidth, pagHeight), QPrinter.Millimeter)
+            #printer.setPaperSize(QSizeF(c.paperWidth(), c.paperHeight()), QPrinter.Millimeter)
+            printer.setFullPage(True)
+            printer.setColorMode(QPrinter.Color)
+            printer.setResolution(c.printResolution())
+
+            pdfPainter = QPainter(printer)
+            paperRectMM = printer.pageRect(QPrinter.Millimeter)
+            paperRectPixel = printer.pageRect(QPrinter.DevicePixel)
+            c.render(pdfPainter, paperRectPixel, paperRectMM)
+            pdfPainter.end()
+            QMessageBox.information(self.iface.mainWindow(), "Resultado", "El mapa " + salida + " ha sido creado existosamente.")
+            #MessageBox.information(None, "Resultados", "El mapa " + salida + " ha sido creado existosamente.")
 
     def labelCodigo(self):
         layer = self.iface.activeLayer()
@@ -536,4 +545,3 @@ class SiguaPlugin:
         palyr.setDataDefinedProperty(QgsPalLayerSettings.Size,True,True,'7','')
         palyr.writeToLayer(layer)
         iface.mapCanvas().refresh()
-        
