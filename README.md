@@ -29,7 +29,16 @@ VERSION = tuple(map(int, __version__.split('.')))
 # Edit this line to set your PostgreSQL connection
 params = ['<your host>', "5432",'<your database>', '<username>', '<password>']
 ```
+### Development
 
+* 1. Copy the entire directory containing your new plugin to the QGIS plugin directory
+* 2. Compile the ui file using pyuic4
+* 3. Compile the resources file using pyrcc4
+* 4. Test the plugin by enabling it in the QGIS plugin manager
+* 5. Customize it by editing the implementation file ""sigua_plugin.py""
+* 6. Create your own custom icon, replacing the default icon.png
+* 7. Modify your user interface by opening ""sigua_plugin_dialog_base.ui"" in Qt Designer (don't forget to compile it with pyuic4 after changing it)
+* 8. You can use the Makefile to compile your Ui and resource files when you make changes. This requires GNU make (gmake) 
 
 ### Repository
 
