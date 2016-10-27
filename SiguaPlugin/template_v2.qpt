@@ -1,0 +1,219 @@
+<Composer title="v" visible="1">
+ <Composition resizeToContentsMarginLeft="0" snapping="0" showPages="1" guidesVisible="1" resizeToContentsMarginTop="0" worldFileMap="{f5cc6e4c-1699-4e70-b2a4-a82a140a0d85}" alignmentSnap="1" printResolution="300" paperWidth="210" gridVisible="0" snapGridOffsetX="0" smartGuides="1" snapGridOffsetY="0" resizeToContentsMarginRight="0" snapTolerancePixels="5" printAsRaster="0" generateWorldFile="0" paperHeight="297" numPages="1" snapGridResolution="10" resizeToContentsMarginBottom="0">
+  <symbol alpha="1" clip_to_extent="1" type="fill" name="">
+   <layer pass="0" class="SimpleFill" locked="0">
+    <prop k="border_width_map_unit_scale" v="0,0,0,0,0,0"/>
+    <prop k="color" v="255,255,255,255"/>
+    <prop k="joinstyle" v="miter"/>
+    <prop k="offset" v="0,0"/>
+    <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
+    <prop k="offset_unit" v="MM"/>
+    <prop k="outline_color" v="0,0,0,255"/>
+    <prop k="outline_style" v="no"/>
+    <prop k="outline_width" v="0.26"/>
+    <prop k="outline_width_unit" v="MM"/>
+    <prop k="style" v="solid"/>
+   </layer>
+  </symbol>
+  <ComposerLabel valign="32" marginX="1" marginY="1" labelText="[AUTOR]&#xa;&#xa;&#xa;" htmlState="0" halign="1">
+   <LabelFont description="Droid Sans,8,-1,5,50,0,0,0,0,0" style="Regular"/>
+   <FontColor red="0" blue="0" green="0"/>
+   <ComposerItem pagey="292.069" page="1" id="fecha" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="99.1863" y="292.069" visibility="1" zValue="30" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="38.0236" outlineWidth="0.3" excludeFromExports="0" uuid="{3cf2aaed-4e19-42d7-a0d0-95671c7f4a98}" height="4.86241" itemRotation="0" frame="false" pagex="99.1863">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerLabel>
+  <ComposerLabel valign="32" marginX="1" marginY="1" labelText="[ORGANISMO]&#xa;&#xa;&#xa;" htmlState="0" halign="1">
+   <LabelFont description="Droid Sans,8,-1,5,50,0,0,0,0,0" style="Regular"/>
+   <FontColor red="0" blue="0" green="0"/>
+   <ComposerItem pagey="292.138" page="1" id="fecha" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="54.7875" y="292.138" visibility="1" zValue="19" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="31.7547" outlineWidth="0.3" excludeFromExports="0" uuid="{48455d65-ecba-4e9c-9810-bc180b76f996}" height="4.86241" itemRotation="0" frame="false" pagex="54.7875">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerLabel>
+  <ComposerPicture resizeMode="0" svgBorderWidth="0.2" pictureRotation="0" pictureWidth="7.51463" svgFillColor="255,255,255,255" svgBorderColor="0,0,0,255" file="/home/jose/.qgis2/python/plugins/SiguaPlugin/img/norte.svg" pictureHeight="16.1982" mapId="-1" anchorPoint="0">
+   <ComposerItem pagey="41.2317" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="191.027" y="41.2317" visibility="1" zValue="17" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="13.1685" outlineWidth="0.3" excludeFromExports="0" uuid="{080c94e8-3c44-4db9-90aa-fa1b3950be30}" height="16.1982" itemRotation="0" frame="false" pagex="191.027">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <dataDefinedSource expr="" field="" active="false" useExpr="true"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerPicture>
+  <ComposerScaleBar lineCapStyle="square" style="Line Ticks Up" numMapUnitsPerScaleBarUnit="1" segmentSizeMode="0" alignment="0" numSegments="2" segmentMillimeters="6.66667" lineJoinStyle="miter" minBarWidth="50" numUnitsPerSegment="5" units="1" labelBarSpace="1" outlineWidth="0.3" numSegmentsLeft="4" maxBarWidth="150" height="1" boxContentSpace="1" unitLabel="m">
+   <scaleBarFont description="Droid Sans,8,-1,5,50,0,0,0,0,0" style="Regular"/>
+   <fillColor alpha="255" red="0" blue="0" green="0"/>
+   <fillColor2 alpha="255" red="255" blue="255" green="255"/>
+   <strokeColor alpha="255" red="0" blue="0" green="0"/>
+   <textColor alpha="255" red="0" blue="0" green="0"/>
+   <ComposerItem pagey="286.885" page="1" id="" lastValidViewScaleFactor="-1" positionMode="8" positionLock="false" x="176.953" y="286.885" visibility="1" zValue="16" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="28.1477" outlineWidth="0.3" excludeFromExports="0" uuid="{5e4b52e2-bdb4-459c-9a15-559e91d4b49d}" height="8.99162" itemRotation="0" frame="false" pagex="176.953">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerScaleBar>
+  <ComposerLabel valign="128" marginX="1" marginY="1" labelText="[TITULO]" htmlState="0" halign="4">
+   <LabelFont description="Droid Sans,10,-1,5,50,0,0,0,0,0" style=""/>
+   <FontColor red="0" blue="0" green="0"/>
+   <ComposerItem pagey="14.9153" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="8.21346" y="14.9153" visibility="1" zValue="15" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="46.2548" outlineWidth="0.3" excludeFromExports="0" uuid="{25e84843-cbbc-45d8-b378-dbe56af6360f}" height="6.69912" itemRotation="0" frame="false" pagex="8.21346">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="230" blue="230" green="230"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerLabel>
+  <ComposerPicture resizeMode="0" svgBorderWidth="0.2" pictureRotation="0" pictureWidth="27.7529" svgFillColor="255,255,255,255" svgBorderColor="0,0,0,255" file="/home/jose/.qgis2/python/plugins/SiguaPlugin/img/logo_sigua.svg" pictureHeight="7.62724" mapId="-1" anchorPoint="0">
+   <ComposerItem pagey="7.13412" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="18.2135" y="7.13412" visibility="1" zValue="14" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="27.7529" outlineWidth="0.3" excludeFromExports="0" uuid="{ce3775f2-2b88-46ea-b564-196df5611044}" height="7.78118" itemRotation="0" frame="false" pagex="18.2135">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <dataDefinedSource expr="" field="" active="false" useExpr="true"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerPicture>
+  <ComposerMap followPreset="false" mapRotation="0" keepLayerSet="false" followPresetName="" id="0" previewMode="Cache" drawCanvasItems="true">
+   <Extent ymin="4251146.00389146991074085" xmin="716885.82638943183701485" ymax="4251320.37040865048766136" xmax="717025.31960317713674158"/>
+   <LayerSet/>
+   <Grid/>
+   <ComposerMapGrid rightAnnotationDirection="0" gridFramePenColor="0,0,0,255" show="0" bottomAnnotationPosition="1" annotationPrecision="3" showAnnotation="0" topFrameDivisions="0" uuid="{c99772d7-2acc-4834-b1ab-4b90735d0b0f}" leftAnnotationDirection="0" topAnnotationPosition="1" rightAnnotationDisplay="0" offsetX="0" offsetY="0" rightFrameDivisions="0" gridStyle="0" annotationFontColor="0,0,0,255" intervalX="0" gridFrameSideFlags="15" intervalY="0" bottomAnnotationDirection="0" leftAnnotationDisplay="0" leftFrameDivisions="0" frameFillColor1="255,255,255,255" annotationExpression="" frameFillColor2="0,0,0,255" crossLength="3" gridFramePenThickness="0.5" bottomAnnotationDisplay="0" unit="0" topAnnotationDisplay="0" leftAnnotationPosition="1" blendMode="0" gridFrameStyle="0" rightAnnotationPosition="1" gridFrameWidth="2" name="Cuadrícula 1" annotationFormat="0" bottomFrameDivisions="0" topAnnotationDirection="0" frameAnnotationDistance="1">
+    <lineStyle>
+     <symbol alpha="1" clip_to_extent="1" type="line" name="">
+      <layer pass="0" class="SimpleLine" locked="0">
+       <prop k="capstyle" v="square"/>
+       <prop k="customdash" v="5;2"/>
+       <prop k="customdash_map_unit_scale" v="0,0,0,0,0,0"/>
+       <prop k="customdash_unit" v="MM"/>
+       <prop k="draw_inside_polygon" v="0"/>
+       <prop k="joinstyle" v="bevel"/>
+       <prop k="line_color" v="0,0,0,255"/>
+       <prop k="line_style" v="solid"/>
+       <prop k="line_width" v="0"/>
+       <prop k="line_width_unit" v="MM"/>
+       <prop k="offset" v="0"/>
+       <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
+       <prop k="offset_unit" v="MM"/>
+       <prop k="use_custom_dash" v="0"/>
+       <prop k="width_map_unit_scale" v="0,0,0,0,0,0"/>
+      </layer>
+     </symbol>
+    </lineStyle>
+    <markerStyle>
+     <symbol alpha="1" clip_to_extent="1" type="marker" name="">
+      <layer pass="0" class="SimpleMarker" locked="0">
+       <prop k="angle" v="0"/>
+       <prop k="color" v="0,0,0,255"/>
+       <prop k="horizontal_anchor_point" v="1"/>
+       <prop k="joinstyle" v="bevel"/>
+       <prop k="name" v="circle"/>
+       <prop k="offset" v="0,0"/>
+       <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
+       <prop k="offset_unit" v="MM"/>
+       <prop k="outline_color" v="0,0,0,255"/>
+       <prop k="outline_style" v="solid"/>
+       <prop k="outline_width" v="0"/>
+       <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
+       <prop k="outline_width_unit" v="MM"/>
+       <prop k="scale_method" v="diameter"/>
+       <prop k="size" v="2"/>
+       <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
+       <prop k="size_unit" v="MM"/>
+       <prop k="vertical_anchor_point" v="1"/>
+      </layer>
+     </symbol>
+    </markerStyle>
+    <annotationFontProperties description="Droid Sans,9,-1,5,50,0,0,0,0,0" style=""/>
+   </ComposerMapGrid>
+   <AtlasMap scalingMode="2" atlasDriven="0" margin="0.10000000000000001"/>
+   <ComposerItem pagey="37" page="1" id="" lastValidViewScaleFactor="2.74267" positionMode="0" positionLock="false" x="5" y="37" visibility="1" zValue="14" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="200" outlineWidth="0.3" excludeFromExports="0" uuid="{f5cc6e4c-1699-4e70-b2a4-a82a140a0d85}" height="250" itemRotation="0" frame="false" pagex="5">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerMap>
+  <ComposerLabel valign="128" marginX="1" marginY="1" labelText="[EDIFICIO]" htmlState="0" halign="4">
+   <LabelFont description="Droid Sans,10,-1,5,50,0,0,0,0,0" style="Regular"/>
+   <FontColor red="0" blue="0" green="0"/>
+   <ComposerItem pagey="21.6144" page="1" id="edificio" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="8.21346" y="21.6144" visibility="1" zValue="10" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="47.1976" outlineWidth="0.3" excludeFromExports="0" uuid="{d4ac812f-e4cc-4c62-afe5-66d2d044a222}" height="11.9158" itemRotation="0" frame="false" pagex="8.21346">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerLabel>
+  <ComposerLabel valign="32" marginX="1" marginY="1" labelText="[FECHA]&#xa;&#xa;&#xa;" htmlState="0" halign="1">
+   <LabelFont description="Droid Sans,8,-1,5,50,0,0,0,0,0" style="Regular"/>
+   <FontColor red="0" blue="0" green="0"/>
+   <ComposerItem pagey="288.825" page="1" id="fecha" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="89.1981" y="288.825" visibility="1" zValue="9" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="16.1699" outlineWidth="0.3" excludeFromExports="0" uuid="{b265ad70-73ad-4313-b37a-575b97055d2f}" height="4.86241" itemRotation="0" frame="false" pagex="89.1981">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerLabel>
+  <ComposerScaleBar lineCapStyle="square" style="Numeric" numMapUnitsPerScaleBarUnit="1" segmentSizeMode="0" alignment="0" numSegments="4" segmentMillimeters="7.16881" lineJoinStyle="miter" minBarWidth="50" numUnitsPerSegment="5" units="1" labelBarSpace="3" outlineWidth="0.3" numSegmentsLeft="2" maxBarWidth="150" height="3" boxContentSpace="1" mapId="0" unitLabel="m">
+   <scaleBarFont description="Droid Sans,8,-1,5,50,0,0,0,0,0" style="Regular"/>
+   <fillColor alpha="255" red="0" blue="0" green="0"/>
+   <fillColor2 alpha="255" red="255" blue="255" green="255"/>
+   <strokeColor alpha="255" red="0" blue="0" green="0"/>
+   <textColor alpha="255" red="0" blue="0" green="0"/>
+   <ComposerItem pagey="292.069" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="16.4883" y="292.069" visibility="1" zValue="8" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="18.492" outlineWidth="0.3" excludeFromExports="0" uuid="{f00ef77c-006d-4483-8707-4a5a27cc4deb}" height="4.93073" itemRotation="0" frame="false" pagex="16.4883">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerScaleBar>
+  <ComposerLabel valign="32" marginX="1" marginY="1" labelText="FUENTE: Sigua, PROYECCIÓN: UTM, datum ETRS89, Huso 30, FECHA:               , &#xa;ESCALA:                            , ORGANISMO:                                              AUTOR: " htmlState="0" halign="1">
+   <LabelFont description="Droid Sans,8,-1,5,50,0,0,0,0,0" style="Regular"/>
+   <FontColor red="0" blue="0" green="0"/>
+   <ComposerItem pagey="288.825" page="1" id="metadatos" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="3.99418" y="288.825" visibility="1" zValue="6" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="121.384" outlineWidth="0.3" excludeFromExports="0" uuid="{254204e6-b2e5-4da8-a17d-3ab50d353e38}" height="8.17525" itemRotation="0" frame="false" pagex="3.99418">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerLabel>
+  <ComposerShape shapeType="1" cornerRadius="0">
+   <symbol alpha="1" clip_to_extent="1" type="fill" name="">
+    <layer pass="0" class="SimpleFill" locked="0">
+     <prop k="border_width_map_unit_scale" v="0,0,0,0,0,0"/>
+     <prop k="color" v="255,255,255,255"/>
+     <prop k="joinstyle" v="miter"/>
+     <prop k="offset" v="0,0"/>
+     <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
+     <prop k="offset_unit" v="MM"/>
+     <prop k="outline_color" v="167,167,167,255"/>
+     <prop k="outline_style" v="solid"/>
+     <prop k="outline_width" v="0.1"/>
+     <prop k="outline_width_unit" v="MM"/>
+     <prop k="style" v="no"/>
+    </layer>
+   </symbol>
+   <ComposerItem pagey="3.696" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="5.427" y="3.696" visibility="1" zValue="5" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="198.718" outlineWidth="0.3" excludeFromExports="0" uuid="{f839e590-516c-40a0-a430-e9c820e9301e}" height="31.494" itemRotation="0" frame="false" pagex="5.427">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerShape>
+  <ComposerLegend symbolWidth="4" resizeToContents="1" title="" boxSpace="2" rasterBorderWidth="0" splitLayer="1" equalColumnWidth="0" titleAlignment="1" rasterBorder="1" symbolHeight="4" wmsLegendHeight="25" wrapChar="" fontColor="#000000" columnSpace="2" wmsLegendWidth="50" columnCount="2" rasterBorderColor="0,0,0,255">
+   <styles>
+    <style marginBottom="2" name="title">
+     <styleFont description="Droid Sans,14,-1,5,50,0,0,0,0,0" style="Regular"/>
+    </style>
+    <style marginTop="2" name="group">
+     <styleFont description="Droid Sans,14,-1,5,50,0,0,0,0,0" style=""/>
+    </style>
+    <style marginTop="2" name="subgroup">
+     <styleFont description="Droid Sans,10,-1,5,50,0,0,0,0,0" style="Regular"/>
+    </style>
+    <style marginTop="2" name="symbol">
+     <styleFont description="Droid Sans,9,-1,5,50,0,0,0,0,0" style=""/>
+    </style>
+    <style marginTop="2" marginLeft="2" name="symbolLabel">
+     <styleFont description="Droid Sans,6,-1,5,50,0,0,0,0,0" style="Regular"/>
+    </style>
+   </styles>
+   <ComposerItem pagey="4.6457" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="56.6648" y="4.6457" visibility="1" zValue="2" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="46.5156" outlineWidth="0.3" excludeFromExports="0" uuid="{d4cf0316-8d53-4b1d-8efb-73c496f02ac4}" height="28.8" itemRotation="0" frame="false" pagex="56.6648">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerLegend>
+  <customproperties/>
+ </Composition>
+</Composer>

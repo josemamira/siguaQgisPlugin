@@ -9,12 +9,12 @@
 [general]
 name=Sigua Plugin
 qgisMinimumVersion=2.0
-description=Utilidad para añadir edificios Sigua a Qgis
+description=Utilidad para anyadir edificios Sigua a Qgis
 version=0.1
-author=José Manuel Mira (Universidad de Alicante)
+author=Jose Manuel Mira (Universidad de Alicante)
 email=josema.mira@gmail.com
 
-about=Utilidad para añadir edificios de la Universidad de Alicante, procedentes de Sigua
+about=Utilidad para anyadir edificios de la Universidad de Alicante, procedentes de Sigua
 
 tracker=https://github.com/josemamira/siguaQgisPlugin
 repository=https://github.com/josemamira/siguaQgisPlugin
